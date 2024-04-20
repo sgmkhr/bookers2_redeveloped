@@ -1,0 +1,39 @@
+<div class="col-md-3">
+  <section>
+    <h1>User info</h1>
+    <table class="table">
+      <tr>
+        <td col=2>
+          <%= user.get_profile_image(100, 100) %>
+        </td>
+      </tr>
+      <tr>
+        <td>name</td>
+        <td><%= user.name %></td>
+      </tr>
+      <tr>
+        <td>introduction</td>
+        <td><%= user.introduction %></td>
+      </tr>
+    </table>
+    <%= link_to edit_user_path(user.id) do %>
+      <p class='border rounded'><i class="fa-solid fa-user-gear"></i></p>
+    <% end %>
+  </section>
+  <section>
+    <h1>New book</h1>
+    <%= form_with model: new_book do |f| %>
+      <div class='form-group'>
+        <label>Title</label>
+        <%= f.text_field :title, class: 'form_control' %>
+      </div>
+      <div class="form-group">
+        <label>Opinion</label>
+        <%= f.text_area :body, class: 'form_control' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Create Book', class: 'btn btn-success' %>
+      </div>
+    <% end %>
+  </section>
+</div>
