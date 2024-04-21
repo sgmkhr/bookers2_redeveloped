@@ -11,11 +11,32 @@
         <th>introduction</th>
         <td><%= user.introduction %></td>
       </tr>
+      <tr>
+        <th>follows</th>
+        <td>
+          <%= link_to user.followings.count, user_followings_path(user) %>
+        </td>
+      </tr>
+      <tr>
+        <th>followers</th>
+        <td>
+          <%= link_to user.followers.count, user_followers_path(user) %>
+        </td>
+      </tr>
     </table>
-    <%= link_to edit_user_path(user.id), class: 'btn btn-outline-secondary btn-block' do %>
-      <i class="fa-solid fa-user-gear"></i>
+    
+    <% if current_user != user %>
+      <%= render 'relationships/btn', user: user, option: {class: ""} %>
+    <% else %>
+      <%= link_to edit_user_path(user.id), class: 'btn btn-outline-secondary btn-block' do %>
+        <i class="fa-solid fa-user-gear"></i>
+      <% end %>
     <% end %>
+    
+    
   </section>
+  
+  
   <section>
     <h2 class='mt-3'>New book</h2>
     <%= form_with model: new_book do |f| %>

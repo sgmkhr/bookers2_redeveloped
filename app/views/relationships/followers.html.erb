@@ -1,0 +1,8 @@
+<div class='container mx-5 my-3'>
+  <h2>Follower Users</h2>
+  <% if @users.exists? %>
+    <%= render "users/list", users: @users %>
+  <% else %>
+    <p>ユーザーはいません。</p>
+  <% end %>
+</div>
