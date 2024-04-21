@@ -8,7 +8,7 @@
           <tr>
             <td>
               <%= link_to user_path(book.user_id) do %>
-                <%= image_tag book.user.get_profile_image(100, 100) %>
+                <%= image_tag book.user.get_profile_image(50, 50) %>
               <% end %>
             </td>
             <td>
@@ -18,6 +18,17 @@
             </td>
             <td>
               <%= book.body %>
+            </td>
+            <td>
+              <% if book.favorited_by?(current_user) %>
+                <%= link_to book_favorite_path(book.id), method: :delete do %>
+                  <i class="fa-solid fa-heart"></i><%= book.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= link_to book_favorite_path(book.id), method: :post do %>
+                  <i class="fa-regular fa-heart"></i><%= book.favorites.count %>
+                <% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>  
