@@ -24,6 +24,9 @@
             <td>
               <%= render 'favorites/favorites_btn', book: @book %>
             </td>
+            <td>
+              コメント数: <%= @book.book_comments.count %>
+            </td>
             <% if @user == current_user %>
               <td>
                 <%= link_to 'Edit', edit_book_path(@book.id), class: 'btn btn-success' %>
@@ -34,6 +37,9 @@
             <% end %>
           </tr>
         </table>
+      </section>
+      <section>
+        <%= render 'book_comments/comments', book: @book, book_comment: @book_comment %>
       </section>
     </div>
   </div>
