@@ -14,6 +14,7 @@
     <%= render 'layouts/header' %>
     <%= flash[:notice] %>
     <main>
+      <%= render 'searches/search_bar' %>
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>

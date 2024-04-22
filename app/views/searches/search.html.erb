@@ -1,0 +1,36 @@
+<div class='conteiner py=3 px=5 w-75 mx-auto'>
+  <h2>Results index</h2>
+  <table class="table table-hover table-inverse">
+    <% if @range == "User" %>
+      <% if @users.exists? %>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to user_path(user) do %>
+                  <%= image_tag user.get_profile_image(50, 50) %>
+                <% end %>
+              </td>
+              <td><%= link_to user.name, user_path(user) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% else %>
+        <p>検索にヒットするユーザーはいませんでした。</p>
+      <% end %>
+    <% else %>
+      <% if @books.exists? %>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= link_to book.title, book_path(book) %></td>
+              <td><%= book.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% else %>
+        <p>検索にヒットする投稿はありませんでした。</p>
+      <% end %>
+    <% end %>
+  </table>
+</div>
