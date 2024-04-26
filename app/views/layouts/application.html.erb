@@ -12,7 +12,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= flash[:notice]%>
+    <p class='text-success'><%= flash[:notice]%></p>
     <main>
       <%= render 'searches/search_bar' %>
       <%= yield %>
