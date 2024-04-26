@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :messages
   has_many :rooms, through: :entries
   
+  has_many :notifications, dependent: :destroy
+  
   validates :name, uniqueness: true, length: { minimum:2, maximum:20 }
   validates :introduction, length: { maximum:50 }
   
