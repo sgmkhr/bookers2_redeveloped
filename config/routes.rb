@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'events/index'
   devise_for :users
   root to: 'homes#top'
   get 'home/about' => 'homes#about', as: 'about'
@@ -21,5 +22,7 @@ Rails.application.routes.draw do
   end 
   
   resources :notifications, only: [:update]
+  
+  get '/events' => 'events#index', defaults: { format: 'json' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
