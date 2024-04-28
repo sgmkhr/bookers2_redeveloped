@@ -1,0 +1,47 @@
+<section>
+  <h2>投稿数の前日比/前週比</h2>
+  <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th>今日の投稿</th>
+        <th>前日の投稿</th>
+        <th>前日比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= books.created_today.count %></td>
+        <td><%= books.created_yesterday.count %></td>
+        <td>
+          <% if books.created_yesterday.count == 0 %>
+            <span>前日の投稿は0件</span>
+          <% else %>
+            <%= (books.created_today.count / books.created_yesterday.count * 100).round %>%
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th>今週の投稿</th>
+        <th>先週の投稿</th>
+        <th>先週比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= books.created_this_week.count %></td>
+        <td><%= books.created_last_week.count %></td>
+        <td>
+          <% if books.created_last_week.count == 0 %>
+            <span>先週の投稿は0件</span>
+          <% else %>
+            <%= (books.created_this_week.count / books.created_last_week.count * 100).round %>%
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
