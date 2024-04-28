@@ -10,13 +10,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= books.created_today.count %></td>
-        <td><%= books.created_yesterday.count %></td>
+        <td><%= @today_book.count %></td>
+        <td><%= @yesterday_book.count %></td>
         <td>
-          <% if books.created_yesterday.count == 0 %>
+          <% if @yesterday_book.count == 0 %>
             <span>前日の投稿は0件</span>
           <% else %>
-            <%= (books.created_today.count / books.created_yesterday.count * 100).round %>%
+            <%= (@today_book.count / @yesterday_book.count.to_f * 100).round %>%
           <% end %>
         </td>
       </tr>
@@ -32,13 +32,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= books.created_this_week.count %></td>
-        <td><%= books.created_last_week.count %></td>
+        <td><%= @this_week_book.count %></td>
+        <td><%= @last_week_book.count %></td>
         <td>
-          <% if books.created_last_week.count == 0 %>
+          <% if @last_week_book.count == 0 %>
             <span>先週の投稿は0件</span>
           <% else %>
-            <%= (books.created_this_week.count / books.created_last_week.count * 100).round %>%
+            <%= (@this_week_book.count / @last_week_book.count.to_f * 100).round %>%
           <% end %>
         </td>
       </tr>
