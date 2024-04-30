@@ -1,4 +1,3 @@
-<% if user_signed_in? %>
 <div class='search_form d-flex justify-content-center'>
   <%= form_with url: search_path, method: :get do |f| %>
     <%= f.text_field :content %>
@@ -7,4 +6,3 @@
     <%= f.submit '検索', class: 'btn btn-secondary' %>
   <% end %>
 </div>
-<% end %>

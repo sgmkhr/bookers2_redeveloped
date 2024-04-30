@@ -35,5 +35,8 @@ Rails.application.routes.draw do
     get "new/mail" => "groups#new_mail"
     get "send/mail" => "groups#send_mail"
   end
+  
+  get 'tagsearches/search' => 'tagsearches#search'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

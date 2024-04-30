@@ -21,6 +21,11 @@
             <td>
               <%= @book.body %>
             </td>
+            <% if @book.category.present? %>
+              <td>
+                <%= link_to @book.category, tagsearches_search_path(content: @book.category) %>
+              </td>
+            <% end %>
             <td id="favorite_buttons_<%= @book.id %>">
               <%= render 'favorites/favorites_btn', book: @book %>
             </td>

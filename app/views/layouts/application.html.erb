@@ -15,7 +15,12 @@
     <%= render 'layouts/header' %>
     <p class='text-success'><%= flash[:notice]%></p>
     <main>
-      <%= render 'searches/search_bar' %>
+      <% if user_signed_in? %>
+        <div class='row d-flex justify-content-center'>
+          <%= render 'searches/search_bar' %>
+          <%= render 'tagsearches/tagsearch' %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
