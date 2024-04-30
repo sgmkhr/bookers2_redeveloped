@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   
   get '/events' => 'events#index', defaults: { format: 'json' }
   
-  resources :groups, only: [:new, :create, :edit, :update, :show, :index, :destroy]
+  resources :groups, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
+    resource :group_users, only: [:create, :destroy] 
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
