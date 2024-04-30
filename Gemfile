@@ -60,3 +60,5 @@ gem 'net-smtp'
 gem 'jquery-rails'
 
 gem 'activerecord-import'
+
+gem 'dotenv-rails'
