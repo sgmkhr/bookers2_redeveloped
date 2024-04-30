@@ -1,6 +1,10 @@
 
   <section>
     <h2>Books</h2>
+    <%= link_to '新しい順', books_path(latest: "true") %>
+    |<%= link_to '古い順', books_path(old: "true") %>
+    |<%= link_to '評価の高い順', books_path(star_count: "true") %>
+    |<%= link_to '直近１週間のいいね多い順', books_path %>
     <table class='table'>
       <thead><tr><th></th><th col=2>Title</th><th col=4>Opinion</th></tr></thead>
       <tbody>

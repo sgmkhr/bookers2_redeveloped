@@ -2,14 +2,23 @@ class BooksController < ApplicationController
   before_action :is_matching_author?, only: [:edit, :update, :destroy]
   
   def index
-    to = Time.current.at_end_of_day
-    from = (to - 6.day).at_beginning_of_day
-    @books = Book.all.sort {|a,b|
-      b.favorites.where(created_at: from...to).size <=>
-      a.favorites.where(created_at: from...to).size
-    }
     @new_book = Book.new
     @user = current_user
+    
+    if params[:latest]
+      @books = Book.latest
+    elsif params[:old]
+      @books = Book.old
+    elsif params[:star_count]
+      @books = Book.star_count
+    else
+      to = Time.current.at_end_of_day
+      from = (to - 6.day).at_beginning_of_day
+      @books = Book.all.sort {|a,b|
+        b.favorites.where(created_at: from...to).size <=>
+        a.favorites.where(created_at: from...to).size
+      }
+    end
   end
   
   def create
